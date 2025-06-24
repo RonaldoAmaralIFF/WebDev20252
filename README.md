@@ -2,7 +2,7 @@
 # Projeto Connect-Local
 
 Descrição do Projeto
-Connect-Local é uma plataforma web completa desenvolvida como projeto final da disciplina de Desenvolvimento Web. O objetivo é criar um portal para divulgação e inscrição em eventos locais, construído com uma arquitetura híbrida usando Java e o ecossistema Spring. A aplicação serve tanto páginas dinâmicas renderizadas no servidor com Thymeleaf quanto uma API REST para clientes externos.
+Connect-Local é uma plataforma web completa desenvolvida como projeto da disciplina de Desenvolvimento Web. O objetivo é criar um portal para divulgação e inscrição em eventos locais, construído com uma arquitetura híbrida usando Java e o ecossistema Spring. A aplicação serve tanto páginas dinâmicas renderizadas no servidor com Thymeleaf quanto uma API REST para clientes externos.
 
 
 
