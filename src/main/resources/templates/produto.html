@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{baseLayout :: baseHead}">
+
+</head>
+
+<body>
+     <header th:replace="~{baseLayout :: baseHeaderPage}"></header>
+    <h1>Detalhes do Produto</h1>
+    <div>
+        <p><strong>ID:</strong> <span th:text="${produto.id}">1</span></p>
+        <p><strong>Nome:</strong> <span th:text="${produto.nome}">Exemplo Produto</span></p>
+        <p><strong>Descrição:</strong> <span th:text="${produto.descricao}">Descrição do produto</span></p>
+        <p><strong>Preço:</strong> R$ <span th:text="${produto.preco}">0.00</span></p>
+    </div>
+    <a th:href="@{/produtos}">Voltar para lista de produtos</a>
+</body>
+</html>
