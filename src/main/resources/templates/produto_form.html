@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR" th:replace="~{base_layout :: base(titulo = ~{::title}, conteudo = ~{::main})}">
+<head>
+    <title>Produto Formulário</title>
+</head>
+<body>
+    <main>
+      
+    <div th:if="${successMessage}" class="alert alert-success" role="alert">
+      <span th:text="${successMessage}"></span>
+    </div>
+
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+      <span th:text="${errorMessage}"></span>
+    </div>
+
+    <h1 class="text-[#111418] tracking-light text-[32px] font-bold leading-tight min-w-72">Cadastro de Produto</h1>
+    
+    
+    <form th:action="@{/produtos}" th:object="${produto}" method="post">
+        <div>
+            <label class="flex flex-col min-w-40 flex-1" for="nome">Nome:</label>
+            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border border-[#dbe0e6] bg-white focus:border-[#dbe0e6] h-14 placeholder:text-[#60758a] p-[15px] text-base font-normal leading-normal" type="text" id="nome" th:field="*{nome}" required />
+            <p class="error" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+        </div>
+        <div>
+            <label class="flex flex-col min-w-40 flex-1" for="descricao">Descrição:</label>
+            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border border-[#dbe0e6] bg-white focus:border-[#dbe0e6] h-14 placeholder:text-[#60758a] p-[15px] text-base font-normal leading-normal" type="text" id="descricao" th:field="*{descricao}" />
+            <p class="error" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></p>
+        </div>
+        <div>
+            <label class="flex flex-col min-w-40 flex-1" for="preco">Preço:</label>
+            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border border-[#dbe0e6] bg-white focus:border-[#dbe0e6] h-14 placeholder:text-[#60758a] p-[15px] text-base font-normal leading-normal" type="number" id="preco" th:field="*{preco}" step="0.01" required />
+            <p class="error" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
+        </div>
+        <div>
+            <label class="flex flex-col min-w-40 flex-1" for="quantidade">Quantidade:</label>
+            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border border-[#dbe0e6] bg-white focus:border-[#dbe0e6] h-14 placeholder:text-[#60758a] p-[15px] text-base font-normal leading-normal" type="number" id="quantidade" th:field="*{quantidadeEstoque}" required />
+            <p class="error" th:if="${#fields.hasErrors('quantidadeEstoque')}" th:errors="*{quatidadeEstoque}"></p>
+        </div>
+        <div>
+            <label class="flex flex-col min-w-40 flex-1" for="categoria">Categoria</label>
+            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border border-[#dbe0e6] bg-white focus:border-[#dbe0e6] h-14 placeholder:text-[#60758a] p-[15px] text-base font-normal leading-normal" type="text" id="categoria" th:field="*{categoria}" required />
+            <p class="error" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></p>
+        </div>
+        <div>
+            <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f0f2f5] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]" type="reset">Cancelar</button>
+            <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0d80f2] text-white text-sm font-bold leading-normal tracking-[0.015em]" type="submit">Salvar</button>
+        </div>
+    </form>
+ </main>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="~{baseLayout :: baseHead}">
+
+</head>
+<body>
+     <header th:replace="~{baseLayout :: baseHeaderPage}"></header>
+   <main>
+            <div th:if="${successMessage}" class="alert alert-success" role="alert">
+                <span th:text="${successMessage}"></span>
+            </div>
+
+            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                <span th:text="${errorMessage}"></span>
+            </div>
+            <h1>Lista de Produtos</h1>
+            <table borde="1" cellpadding="5" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo usando Thymeleaf -->
+                    <tr th:each="produto : ${produtos}">
+                        <td th:text="${produto.id}"></td>
+                        <td th:text="${produto.nome}"></td>
+                        <td th:text="${produto.preco}"></td>
+                        <td th:text="${produto.categoria}"></td>
+                    </tr>
+                </tbody>
+            </table>
+      
+    </main>
+</body>
+</html>
