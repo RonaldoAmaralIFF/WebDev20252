@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.iff.ccc.webdev.entities.Produto;
+import br.edu.iff.ccc.webdev.exception.ProdutoNaoEncontrado;
 import br.edu.iff.ccc.webdev.service.ProdutoService;
 import jakarta.validation.Valid;
 
@@ -26,17 +27,16 @@ public class ProdutoController {
     @GetMapping("/{id}")
     public String getHomePage(@PathVariable("id") Long id, Model model) {
                 
-
-        Produto produto = produtoService.findProdutoById(id);
-
-        if (produto == null) {
-            model.addAttribute("errorMessage", "Produto não encontrado.");
-            return "produtos.html"; // Redirect to an error page if the product is not found
-        }
-        
+        Produto produto;
+        try {
+            produto = produtoService.findProdutoById(id);
+        } catch (ProdutoNaoEncontrado e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "produtos.html"; 
+        }   
         model.addAttribute("produto", produto);
-        
         return "produto.html";
+        
     }
     
     @GetMapping()

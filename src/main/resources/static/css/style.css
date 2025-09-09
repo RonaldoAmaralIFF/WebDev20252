@@ -1,11 +1,4 @@
-    body { font-family: sans-serif; margin: 2em; 
-            background-color: #a32020; /* Cor de fundo */
-    
-    }
-    label { display: block; margin-top: 1em; }
-    input, textarea { width: 300px; padding: 8px; }
-    button { margin-top: 1.5em; padding: 10px 15px; cursor: pointer; }
-    
+   
     
     .error { color: red; font-size: 0.9em; } /* Estilo para mensagens de erro */
 

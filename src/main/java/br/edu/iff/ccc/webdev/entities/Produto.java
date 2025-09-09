@@ -6,6 +6,8 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
@@ -18,6 +20,7 @@ public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -92,13 +95,11 @@ public class Produto implements Serializable {
 
     @Override
     public int hashCode() {
-        // TODO Auto-generated method stub
         return Objects.hash(id, nome);
     }
 
     @Override
     public boolean equals(Object obj) {
-        // TODO Auto-generated method stub
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Produto produto = (Produto) obj;

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" >
-<head th:replace="~{baseLayout :: baseHead}">
-
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR" th:replace="~{base_layout :: base(titulo = ~{::title}, conteudo = ~{::main})}">
+<head>
+    <title>Detalhes do Produto</title>
 </head>
 <body>
-     <header th:replace="~{baseLayout :: baseHeaderPage}"></header>
-   <main>
-            <div th:if="${successMessage}" class="alert alert-success" role="alert">
-                <span th:text="${successMessage}"></span>
-            </div>
+    <main>
+      
+    <div th:if="${successMessage}" class="alert alert-success" role="alert">
+      <span th:text="${successMessage}"></span>
+    </div>
 
-            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
-                <span th:text="${errorMessage}"></span>
-            </div>
-            <h1>Lista de Produtos</h1>
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+      <span th:text="${errorMessage}"></span>
+    </div>
+
+    <h1 class="text-[#111418] tracking-light text-[32px] font-bold leading-tight min-w-72">Lista de Produtos</h1>
+    
             <table borde="1" cellpadding="5" cellspacing="0">
                 <thead>
                     <tr>
