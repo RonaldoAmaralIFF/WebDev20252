@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -32,10 +31,7 @@ public class ApiGlobalAdviceException{
         problemDetail.setTitle(e.getClass().getSimpleName());    
         problemDetail.setProperty("url", req.getRequestURL().toString());
         problemDetail.setProperty("timestamp", LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault()).toString());  
-        problemDetail.setProperty("status", HttpStatusCode.valueOf(problemDetail.getStatus()).toString());  
-        problemDetail.setProperty("message", e.getMessage());
         problemDetail.setProperty("exception", e.getClass().getName());
-        problemDetail.setProperty("path", req.getRequestURI());
         return problemDetail;
    }
 
