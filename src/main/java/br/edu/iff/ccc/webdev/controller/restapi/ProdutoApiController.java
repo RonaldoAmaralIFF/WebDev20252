@@ -3,6 +3,8 @@ package br.edu.iff.ccc.webdev.controller.restapi;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.parsing.Problem;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,8 @@ import br.edu.iff.ccc.webdev.entities.Produto;
 import br.edu.iff.ccc.webdev.exception.ProdutoNaoEncontrado;
 import br.edu.iff.ccc.webdev.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,8 +31,22 @@ public class ProdutoApiController {
 
     @Operation(summary = "Obter Produto", description = "Obtém os detalhes de um produto específico pelo seu ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Produto encontrado com sucesso"),
-        @ApiResponse(responseCode = "404", description = "Produto não encontrado")
+        @ApiResponse(
+            responseCode = "200", 
+            description = "Produto encontrado com sucesso",
+            content = @Content(
+                mediaType = "application/json",
+                schema = @Schema(implementation = Produto.class)
+            )               
+        ),
+        @ApiResponse(
+            responseCode = "404",
+            description = "Produto não encontrado",
+            content = @Content(
+                mediaType = "application/json",
+                schema = @Schema(implementation = ProblemDetail.class)
+            )
+        )
     })
     @GetMapping("/{id}")
     public ResponseEntity<Produto>  getProduto(@PathVariable Long id){
